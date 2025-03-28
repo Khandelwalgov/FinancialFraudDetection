@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>About the Dataset</h2>
+    <p>This dataset contains real-world financial transactions used for fraud detection.</p>
+
+    <h3>Dataset Summary</h3>
+    <ul>
+        <li><strong>Total Transactions:</strong> 5,083,526</li>
+        <li><strong>Fraudulent Transactions:</strong> 8,213 (0.16%)</li>
+        <li><strong>Most Common Transaction Type:</strong> Payment (45%)</li>
+        <li><strong>Highest Fraud Type:</strong> Transfer & Cash Out</li>
+    </ul>
+
+    <h3>Feature Correlation Heatmap</h3>
+    <img src="{{ heatmap }}" alt="Feature Correlation Heatmap" width="700">
+
+    <h3>Features Used in Model:</h3>
+    <ul class="feature-list">
+        {% for column in columns %}
+            <li>{{ column }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Key Observations:</h3>
+    <p>- Fraud transactions often involve large amounts with zero balance left.</p>
+    <p>- Transfers and Cash-Out transactions are the most targeted fraud types.</p>
+
+{% endblock %}
