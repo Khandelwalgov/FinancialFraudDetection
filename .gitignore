@@ -2,3 +2,5 @@ venv/
 *.dll
 *.pkl
 *.h5
+models\random_forest_fraud_model.pkl
+models\xgboost_fraud_model.pkl
