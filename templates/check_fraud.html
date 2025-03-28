@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>🔍 Check if a Transaction is Fraudulent</h2>
+        <p>Fill in the transaction details below to analyze whether it's fraud or not.</p>
+
+        <form method="post" class="form-grid">
+            <div class="fraud-form">
+                <label>Step (Time in Dataset):</label>
+                <input type="number" name="step" placeholder="Example: 10" required>
+
+                <label>Transaction Amount ($):</label>
+                <input type="number" name="amount" placeholder="Example: 20000" required>
+
+                <label>Old Balance of Sender ($):</label>
+                <input type="number" name="oldbalanceOrg" placeholder="Example: 50000" required>
+
+                <label>New Balance of Sender ($):</label>
+                <input type="number" name="newbalanceOrig" placeholder="Example: 30000" required>
+
+                <label>Old Balance of Receiver ($):</label>
+                <input type="number" name="oldbalanceDest" placeholder="Example: 0" required>
+
+                <label>New Balance of Receiver ($):</label>
+                <input type="number" name="newbalanceDest" placeholder="Example: 20000" required>
+            
+
+            <h3>💳 Transaction Type:</h3>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="type_CASH_OUT" value="1"> Cash Out</label>
+                <label><input type="checkbox" name="type_DEBIT" value="1"> Debit</label>
+                <label><input type="checkbox" name="type_PAYMENT" value="1"> Payment</label>
+                <label><input type="checkbox" name="type_TRANSFER" value="1"> Transfer</label>
+            </div>
+            <button type="submit">🚀 Check Fraud</button>
+        </div>
+
+        </form>
+
+        {% if result_xgb and result_rf %}
+            <div class="result-box">
+                <h3>XGBoost Prediction: <span class="fraud-result">{{ result_xgb }}</span></h3>
+                <h3>Random Forest Prediction: <span class="fraud-result">{{ result_rf }}</span></h3>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
