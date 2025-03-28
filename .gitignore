@@ -1,0 +1,4 @@
+venv/
+*.dll
+*.pkl
+*.h5
