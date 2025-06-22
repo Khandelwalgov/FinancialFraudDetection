@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <div class="landing-container">
-        <h1>💳 Intelligent Fraud Detection</h1>
-        <p>Using <strong>Machine Learning</strong> to detect financial fraud in transactions.</p>
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="typing-heading">💳 Smarter Fraud Detection Starts Here</h1>
+        <p>Detect financial frauds with precision using our ML-driven intelligence platform.</p>
+        <a href="/check_fraud" class="cta-button">🚀 Try It Now</a>
 
-
-        <div class="features">
-            <div class="feature-box">
-                <h3>📊 Real-Time Fraud Analysis</h3>
-                <p>Check transactions instantly using AI-powered models.</p>
+        <div class="hero-features">
+            <div class="feature-card">
+                <h3>⚡ Real-Time Scanning</h3>
+                <p>Instant AI evaluation of every transaction.</p>
             </div>
-            <div class="feature-box">
-                <h3>🚀 Advanced ML Models</h3>
-                <p>We use <strong>XGBoost & Random Forest</strong> for precise fraud detection.</p>
+            <div class="feature-card">
+                <h3>🧠 Dual ML Engines</h3>
+                <p>Leveraging XGBoost & Random Forest models.</p>
             </div>
-            <div class="feature-box">
-                <h3>🔍 Understand the Dataset</h3>
-                <p>Visualize transaction patterns & fraud trends.</p>
+            <div class="feature-card">
+                <h3>📈 Transparent Insights</h3>
+                <p>Analyze fraud patterns & financial behavior.</p>
             </div>
         </div>
-
-        <a href="/check_fraud" class="cta-button">Check a Transaction ➜</a>
     </div>
+</div>
 {% endblock %}

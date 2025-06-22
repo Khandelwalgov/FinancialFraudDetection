@@ -1,29 +1,111 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h2>About the Dataset</h2>
-    <p>This dataset contains real-world financial transactions used for fraud detection.</p>
+<style>
+  body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .aboutcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  .section-title {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #ffe082;
+  }
+  .section-desc {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ddd;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    padding: 25px;
+    margin: 20px 0;
+    width: 100%;
+  }
+  .card-title {
+    font-size: 1.6rem;
+    color: #90caf9;
+    margin-bottom: 15px;
+  }
+  .icon-list {
+    list-style: none;
+    padding: 0;
+  }
+  .icon-list li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  .icon-list i {
+    color: #ffcc80;
+    margin-right: 8px;
+  }
+  .responsive-img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+</style>
 
-    <h3>Dataset Summary</h3>
-    <ul>
-        <li><strong>Total Transactions:</strong> 5,083,526</li>
-        <li><strong>Fraudulent Transactions:</strong> 8,213 (0.16%)</li>
-        <li><strong>Most Common Transaction Type:</strong> Payment (45%)</li>
-        <li><strong>Highest Fraud Type:</strong> Transfer & Cash Out</li>
+<div class="aboutcontent">
+  <h2 class="section-title">📁 About the Dataset</h2>
+  <p class="section-desc">This dataset contains real-world financial transactions used for fraud detection.</p>
+
+  <div class="card">
+    <h3 class="card-title">📊 Dataset Summary</h3>
+    <ul class="icon-list">
+      <li><i class="fas fa-database"></i> <strong>Total Transactions:</strong> <span id="totalTx">0</span></li>
+      <li><i class="fas fa-skull-crossbones"></i> <strong>Fraudulent Transactions:</strong> 8,213 (0.16%)</li>
+      <li><i class="fas fa-credit-card"></i> <strong>Most Common Transaction Type:</strong> Payment (45%)</li>
+      <li><i class="fas fa-exclamation-triangle"></i> <strong>Highest Fraud Type:</strong> Transfer & Cash Out</li>
     </ul>
+  </div>
 
-    <h3>Feature Correlation Heatmap</h3>
-    <img src="{{ heatmap }}" alt="Feature Correlation Heatmap" width="700">
+  <div class="card">
+    <h3 class="card-title">🗺️ Feature Correlation Heatmap</h3>
+    <img src="{{ heatmap }}" alt="Feature Correlation Heatmap" class="responsive-img">
+  </div>
 
-    <h3>Features Used in Model:</h3>
-    <ul class="feature-list">
-        {% for column in columns %}
-            <li>{{ column }}</li>
-        {% endfor %}
+  <div class="card">
+    <h3 class="card-title">🧠 Features Used in Model</h3>
+    <ul class="icon-list">
+      {% for column in columns %}
+          <li><i class="fas fa-check-circle"></i> {{ column }}</li>
+      {% endfor %}
     </ul>
+  </div>
 
-    <h3>Key Observations:</h3>
-    <p>- Fraud transactions often involve large amounts with zero balance left.</p>
-    <p>- Transfers and Cash-Out transactions are the most targeted fraud types.</p>
+  <div class="card">
+    <h3 class="card-title">🔍 Key Observations</h3>
+    <p>✔ Fraud transactions often involve large amounts with zero balance left.</p>
+    <p>✔ Transfers and Cash-Out transactions are the most targeted fraud types.</p>
+  </div>
+</div>
 
+<script>
+let totalTx = document.getElementById("totalTx");
+let count = 0;
+let interval = setInterval(() => {
+    count += 25000;
+    totalTx.innerText = count.toLocaleString();
+    if (count >= 5083526) {
+        totalTx.innerText = "5,083,526";
+        clearInterval(interval);
+    }
+}, 10);
+</script>
 {% endblock %}
