@@ -5,3 +5,5 @@ venv/
 models\random_forest_fraud_model.pkl
 models\xgboost_fraud_model.pkl
 test.py
+venv/
+models/

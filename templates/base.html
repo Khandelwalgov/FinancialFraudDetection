@@ -9,8 +9,15 @@
 </head>
 <body>
     <header class="glass-navbar">
+        <div class="phoneburg">
         <div class="logo">🔐 FraudX.AI</div>
-        <nav class="navbar-links">
+
+        <!-- Hamburger button (hidden on desktop) -->
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        </div>
+
+        <!-- Navbar links -->
+        <nav class="navbar-links" id="navbarLinks">
             <a href="/">🏠 Home</a>
             <a href="/about">📊 About Dataset</a>
             <a href="/check_fraud">🕵️‍♂️ Check Fraud</a>
@@ -24,5 +31,12 @@
     <footer>
         <strong>🚀 Built with ❤️ by Govind Khandelwal</strong>
     </footer>
+
+    <!-- JS to toggle menu -->
+    <script>
+        function toggleMenu() {
+            document.getElementById("navbarLinks").classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
